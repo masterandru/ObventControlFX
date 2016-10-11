@@ -26,6 +26,7 @@ public class MainApp extends Application {
         primaryStage.setTitle("Obvent Control FX v. 0.1 rev. 0");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+        //
     }
 
 

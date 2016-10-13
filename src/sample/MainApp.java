@@ -9,6 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class MainApp extends Application {
 
@@ -34,6 +37,11 @@ public class MainApp extends Application {
         primaryStage.show();*/
         //
 
+        /*
+        ArrayList<String> arrayList= new ArrayList<>();
+        arrayList.addAll(Arrays.asList("1","2","3"));
+        arrayList.forEach((v)-> {System.out.println("Item : " + v );});
+        */
 
         // Get Controller from Application
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainview.fxml"));

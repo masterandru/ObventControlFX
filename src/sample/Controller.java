@@ -7,6 +7,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 public class Controller {
+
+
     @FXML
     protected Button connectButton;
     @FXML
@@ -20,9 +22,11 @@ public class Controller {
 
 
 
+
     public void connectButtonPressed(ActionEvent actionEvent) {
         System.out.println("connect Button pressed");
         statusLabelParam.setText("connect"); // TODO: Добавить обработчик изменения состояния и в нем устанавливать отображаемое состояние порта
+
         //MainApp.
     }
 
@@ -31,7 +35,6 @@ public class Controller {
         statusLabelParam.setText("disconnect"); // TODO: Добавить обработчик изменения состояния и в нем устанавливать отображаемое состояние порта
 
     }
-
 
 
 

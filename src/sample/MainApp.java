@@ -1,18 +1,20 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 
 public class MainApp extends Application {
+
+    @FXML
+    protected Button cButton;
+    private Controller controller;
 
     // Открытие соединения по COM-порту
     public boolean connect() {
@@ -22,12 +24,42 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("mainview.fxml"));
+
+
+//        FXMLLoader fxmlloader;
+
+        /*Parent root = FXMLLoader.load(getClass().getResource("mainview.fxml"));
         primaryStage.setTitle("Obvent Control FX v. 0.1 rev. 0");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
+        primaryStage.setScene(new Scene(root, 500, 450));
+        primaryStage.show();*/
         //
+
+
+        // Get Controller from Application
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("mainview.fxml"));
+        Parent root = (Parent)loader.load();
+        primaryStage.setTitle("Obvent Control FX v. 0.1 rev. 0");
+        primaryStage.setScene(new Scene(root, 500, 450));
+        primaryStage.show();
+        Controller controller = (Controller)loader.getController();
+
+
+        //
+
+       /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainview.fxml"));
+        VBox root = (VBox)fxmlLoader.load();
+        controller = (Controller) fxmlLoader.getController();
+        primaryStage.setScene(new Scene(root, 400, 300));
+        primaryStage.show();*/
+
+
     }
+
+//   @Override
+//    public void stop() throws Exception {
+//        super.stop();
+//        //controller.destroy();
+//    }
 
 
     public static void main(String[] args) {

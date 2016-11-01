@@ -6,11 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import jssc.SerialPort;
+import jssc.SerialPortException;
 
 
 public class MainApp extends Application {
@@ -19,10 +17,23 @@ public class MainApp extends Application {
     protected Button cButton;
     private Controller controller;
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     // Открытие соединения по COM-порту
     public boolean connect() {
         return true;
     }
+
+//   @Override
+//    public void stop() throws Exception {
+//        super.stop();
+//        //controller.destroy();
+//    }
+
+
+
 
 
     @Override
@@ -45,12 +56,16 @@ public class MainApp extends Application {
 
         // Get Controller from Application
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainview.fxml"));
-        Parent root = (Parent)loader.load();
+        Parent root = (Parent) loader.load();
         primaryStage.setTitle("Obvent Control FX v. 0.1 rev. 0");
         primaryStage.setScene(new Scene(root, 500, 450));
         primaryStage.show();
-        Controller controller = (Controller)loader.getController();
+        Controller controller = (Controller) loader.getController();
 
+
+        /*int[] a = {10, 20, 30, 40, 50};
+        int sum = IntStream.of(a).sum();
+        System.out.println("The sum is " + sum);*/
 
         //
 
@@ -61,16 +76,24 @@ public class MainApp extends Application {
         primaryStage.show();*/
 
 
+
+        SerialPort serialPort = new SerialPort("COM1");
+        try {
+            serialPort.openPort();//Open serial port
+            serialPort.setParams(SerialPort.BAUDRATE_9600,
+                    SerialPort.DATABITS_8,
+                    SerialPort.STOPBITS_1,
+                    SerialPort.PARITY_NONE);//Set params. Also you can set params by this string: serialPort.setParams(9600, 8, 1, 0);
+            serialPort.writeBytes("This is a test string".getBytes());//Write data to port
+            serialPort.closePort();//Close serial port
+        }
+        catch (SerialPortException ex) {
+            System.out.println(ex);
+        }
     }
 
-//   @Override
-//    public void stop() throws Exception {
-//        super.stop();
-//        //controller.destroy();
-//    }
 
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+
+
 }

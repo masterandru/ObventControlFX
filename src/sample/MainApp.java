@@ -33,8 +33,13 @@ public class MainApp extends Application {
 //    }
 
 
+/*    void runMyCode () throws Exception{
+        throw new Exception();
+    }
 
-
+    void runMyCodeNew () {
+        throw new Exception();
+    }*/
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -67,14 +72,14 @@ public class MainApp extends Application {
         int sum = IntStream.of(a).sum();
         System.out.println("The sum is " + sum);*/
 
-        //
 
-       /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainview.fxml"));
+
+
+        /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainview.fxml"));
         VBox root = (VBox)fxmlLoader.load();
         controller = (Controller) fxmlLoader.getController();
         primaryStage.setScene(new Scene(root, 400, 300));
         primaryStage.show();*/
-
 
 
         SerialPort serialPort = new SerialPort("COM1");
@@ -94,6 +99,19 @@ public class MainApp extends Application {
         catch (SerialPortException ex) {
             System.out.println(ex);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 
